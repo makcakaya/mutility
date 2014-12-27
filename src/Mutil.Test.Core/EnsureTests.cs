@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mutil.Core;
+using Mutil.Core.Assertion;
 
 namespace Mutil.Test.Core
 {
@@ -11,23 +12,16 @@ namespace Mutil.Test.Core
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Can_Throw_Expected_Exception()
         {
-            var ensure = new Ensure("mutilensure");
-            ensure.That(() => 1 == 2, new ArgumentOutOfRangeException());
+            var ensure = new Ensure();
+            ensure.If(true).Throw<ArgumentOutOfRangeException>();
         }
 
         [TestMethod]
-        public void Can_Get_Stacktrace()
+        public void Does_Not_Throw_If_Satisfied()
         {
             var ensure = new Ensure();
-            try
-            {
-                ensure.That(() => 1 == 2);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Assert.IsTrue(e.Message.Contains("Mutil.Core.Ensure.That"));
-            }
+            ensure.If(false).Throw<ArgumentOutOfRangeException>();
         }
-    }
+
+   }
 }

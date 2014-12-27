@@ -39,10 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ensure.cs" />
+    <Compile Include="Assertion\Ensure.cs" />
+    <Compile Include="Assertion\IfResult.cs" />
+    <Compile Include="DataTypes\OneTime.cs" />
     <Compile Include="Exceptions\AlreadyRegisteredException.cs" />
     <Compile Include="Exceptions\MutilException.cs" />
     <Compile Include="Exceptions\NotRegisteredException.cs" />
+    <Compile Include="Exceptions\ReadonlyException.cs" />
     <Compile Include="Ioc\ContainmentType.cs" />
     <Compile Include="Ioc\Mioc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
