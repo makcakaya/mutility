@@ -1,4 +1,7 @@
 ﻿
+using Mutil.Core.Assertion;
+using Mutil.Core.Exceptions;
+
 namespace Mutil.Core.DataTypes
 {
     /// <summary>
@@ -6,9 +9,9 @@ namespace Mutil.Core.DataTypes
     /// After assigning the value the first time, any further assignments will throw exceptions. 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public sealed class OneTime<T>
+    public sealed class WriteOnce<T>
     {
-        #region Fields
+        #region Field
 
         private T _value;
         private bool _locked = false;
@@ -26,8 +29,7 @@ namespace Mutil.Core.DataTypes
             get { return _value; }
             set
             {
-                // TODO: Add assertion
-                // Ensure.If(this.Locked).Throw<ReadonlyException>
+                Ensure.If(this.IsLocked).Throw<ReadonlyException>();
                 _value = value;
             }
         }
@@ -41,12 +43,9 @@ namespace Mutil.Core.DataTypes
 
         #region Ctor
 
-        public OneTime()
-        {
+        public WriteOnce() { }
 
-        }
-
-        public OneTime(T value)
+        public WriteOnce(T value)
         {
             this.Value = value;
         }

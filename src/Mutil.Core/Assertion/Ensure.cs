@@ -12,7 +12,7 @@ namespace Mutil.Core.Assertion
     /// throwing exceptions etc.
     /// Example: ensure.If(mybool).Throw<ArgumentException>("customMessage")
     /// </summary>
-    public sealed class Ensure
+    public static class Ensure
     {
         #region Fields
 
@@ -37,10 +37,34 @@ namespace Mutil.Core.Assertion
 
         #region Public Methods
 
-        public IfResult If(bool value)
+        public static IfResult If(bool value)
         {
             // Return a new IfResult object that will provide fluent API for caller
             return new IfResult(value);
+        }
+
+        public static void NotNull<T>(T obj, string argumentName = null) where T : class
+        {
+            if(object.ReferenceEquals(obj, null))
+            {
+                throw new ArgumentNullException(argumentName);
+            }
+        }
+
+        public static void NotEmpty(string obj, string argumentName = null)
+        {
+            if(string.IsNullOrEmpty(obj))
+            {
+                throw new ArgumentException(argumentName);
+            }
+        }
+
+        public static void NotNullOrWhitespace(string obj, string argumentName = null)
+        {
+            if(string.IsNullOrWhiteSpace(obj))
+            {
+                throw new ArgumentException(argumentName);
+            }
         }
 
         #endregion Public Methods

@@ -7,7 +7,7 @@ namespace Mutil.Core.Assertion
     {
         #region Fields
 
-        private OneTime<bool> _predicate = new OneTime<bool>();
+        private WriteOnce<bool> _predicate = new WriteOnce<bool>();
 
         #endregion Fields
 

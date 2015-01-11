@@ -12,15 +12,13 @@ namespace Mutil.Test.Core
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Can_Throw_Expected_Exception()
         {
-            var ensure = new Ensure();
-            ensure.If(true).Throw<ArgumentOutOfRangeException>();
+            Ensure.If(true).Throw<ArgumentOutOfRangeException>();
         }
 
         [TestMethod]
         public void Does_Not_Throw_If_Satisfied()
         {
-            var ensure = new Ensure();
-            ensure.If(false).Throw<ArgumentOutOfRangeException>();
+            Ensure.If(false).Throw<ArgumentOutOfRangeException>();
         }
 
    }

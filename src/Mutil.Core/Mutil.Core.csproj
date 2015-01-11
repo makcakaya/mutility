@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="Assertion\Ensure.cs" />
     <Compile Include="Assertion\IfResult.cs" />
-    <Compile Include="DataTypes\OneTime.cs" />
+    <Compile Include="DataTypes\WriteOnce.cs" />
     <Compile Include="Exceptions\AlreadyRegisteredException.cs" />
     <Compile Include="Exceptions\MutilException.cs" />
     <Compile Include="Exceptions\NotRegisteredException.cs" />
