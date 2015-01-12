@@ -45,7 +45,7 @@
     <Compile Include="Exceptions\AlreadyRegisteredException.cs" />
     <Compile Include="Exceptions\MutilException.cs" />
     <Compile Include="Exceptions\NotRegisteredException.cs" />
-    <Compile Include="Exceptions\ReadonlyException.cs" />
+    <Compile Include="Exceptions\WriteOnceException.cs" />
     <Compile Include="Ioc\ContainmentType.cs" />
     <Compile Include="Ioc\Mioc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

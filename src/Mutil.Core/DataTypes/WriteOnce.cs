@@ -1,6 +1,4 @@
-﻿
-using Mutil.Core.Assertion;
-using Mutil.Core.Exceptions;
+﻿using Mutil.Core.Exceptions;
 
 namespace Mutil.Core.DataTypes
 {
@@ -14,7 +12,7 @@ namespace Mutil.Core.DataTypes
         #region Field
 
         private T _value;
-        private bool _locked = false;
+        private bool _isLocked = false;
 
         #endregion
 
@@ -29,14 +27,16 @@ namespace Mutil.Core.DataTypes
             get { return _value; }
             set
             {
-                Ensure.If(this.IsLocked).Throw<ReadonlyException>();
+                if (this.IsLocked) { throw new WriteOnceException(); }
+
                 _value = value;
+                _isLocked = true;
             }
         }
 
         public bool IsLocked
         {
-            get { return _locked; }
+            get { return _isLocked; }
         }
 
         #endregion
