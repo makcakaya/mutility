@@ -25,5 +25,19 @@ namespace Mutil.Core.Tests.Assertion
 
             Assert.True(logged);
         }
+
+        [Fact]
+        public void Assume_DoesNotLogWhenSatisfied()
+        {
+            var logged = false;
+            var logger = new Mock<IAssertionLogger>();
+            var assumptionId = "TestAssumption";
+            logger.Setup(l => l.AssumptionFailed(assumptionId, null)).Callback(() => logged = true);
+            AssertionLogger.Instance = logger.Object;
+
+            Assume.That(true, assumptionId, null);
+
+            Assert.False(logged);
+        }
     }
 }
