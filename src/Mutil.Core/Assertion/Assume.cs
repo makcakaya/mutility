@@ -6,7 +6,7 @@
         {
             if (assumption) { return; }
 
-            AssertionLogger.Instance.AssumptionFailed(assumptionId, message);
+            AssertionLogger.Log(assumptionId, message);
         }
     }
 }

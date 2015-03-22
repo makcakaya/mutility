@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assertion\AssumeTests.cs" />
     <Compile Include="Assertion\EnsureTests.cs" />
     <Compile Include="Ioc\MiocTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
