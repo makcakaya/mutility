@@ -21,5 +21,7 @@ namespace Mutil.Test.Core
             Ensure.If(false).Throw<ArgumentOutOfRangeException>();
         }
 
+        
+
    }
 }

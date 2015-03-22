@@ -39,8 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assertion\AssertionLogger.cs" />
     <Compile Include="Assertion\Ensure.cs" />
-    <Compile Include="Assertion\IfResult.cs" />
+    <Compile Include="Assertion\ThatResult.cs" />
     <Compile Include="DataTypes\WriteOnce.cs" />
     <Compile Include="Exceptions\AlreadyRegisteredException.cs" />
     <Compile Include="Exceptions\MutilException.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Exceptions\WriteOnceException.cs" />
     <Compile Include="Ioc\ContainmentType.cs" />
     <Compile Include="Ioc\Mioc.cs" />
+    <Compile Include="Logging\IAssertionLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

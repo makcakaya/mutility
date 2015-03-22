@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Linq;
 
 namespace Mutil.Core.Assertion
 {
     /// <summary>
-    /// Provides facilities that eases the management of assertions and condition checking
-    /// throwing exceptions etc.
-    /// Example: ensure.If(mybool).Throw<ArgumentException>("customMessage")
+    /// Provides methods to handle assertions and throwing exceptions when assertions fail.
     /// </summary>
     public static class Ensure
     {
@@ -37,34 +35,47 @@ namespace Mutil.Core.Assertion
 
         #region Public Methods
 
-        public static IfResult If(bool value)
+        public static ThatResult That(bool value)
         {
-            // Return a new IfResult object that will provide fluent API for caller
-            return new IfResult(value);
+            return new ThatResult(value); // Fluent API
         }
 
         public static void NotNull<T>(T obj, string argumentName = null) where T : class
         {
-            if(object.ReferenceEquals(obj, null))
+            if (object.ReferenceEquals(obj, null))
             {
-                throw new ArgumentNullException(argumentName);
+                var ex = new ArgumentNullException(argumentName);
+                AssertionLogger.Log(ex);
+                throw ex;
             }
         }
 
         public static void NotEmpty(string obj, string argumentName = null)
         {
-            if(string.IsNullOrEmpty(obj))
+            if (string.IsNullOrEmpty(obj))
             {
-                throw new ArgumentException(argumentName);
+                var ex = new ArgumentException(argumentName);
+                AssertionLogger.Log(ex);
+                throw ex;
             }
         }
 
         public static void NotNullOrWhitespace(string obj, string argumentName = null)
         {
-            if(string.IsNullOrWhiteSpace(obj))
+            if (string.IsNullOrWhiteSpace(obj))
             {
-                throw new ArgumentException(argumentName);
+                var ex = new ArgumentException(argumentName);
+                AssertionLogger.Log(ex);
+                throw ex;
             }
+        }
+
+        public static void Contains<T>(IEnumerable<T> collection, T value) 
+        {
+            if (collection.Contains(value)) { return; }
+
+            var ex = new InvalidOperationException(string.Format("{0} collection does not contain {1}", collection, value));
+            AssertionLogger.Log(ex);
         }
 
         #endregion Public Methods
