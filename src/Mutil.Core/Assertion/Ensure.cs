@@ -76,6 +76,7 @@ namespace Mutil.Core.Assertion
 
             var ex = new InvalidOperationException(string.Format("{0} collection does not contain {1}", collection, value));
             AssertionLogger.Log(ex);
+            throw ex;
         }
 
         #endregion Public Methods

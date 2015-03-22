@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assertion\AssertionLogger.cs" />
+    <Compile Include="Assertion\Assume.cs" />
     <Compile Include="Assertion\Ensure.cs" />
     <Compile Include="Assertion\ThatResult.cs" />
     <Compile Include="DataTypes\WriteOnce.cs" />
@@ -54,8 +55,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir "$(SolutionDir)..\bin\"
-xcopy /S /Y "$(SolutionDir)Mutil.Core\bin\Release\Mutil.Core.dll" "$(SolutionDir)..\bin\"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

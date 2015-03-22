@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22310.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mutil.Core", "Mutil.Core\Mutil.Core.csproj", "{23F055A4-58DB-4ADE-8727-8600E88493F1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{C7AF44AC-52D0-4C7A-B71B-21395F4EDACE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mutil.Test.Core", "Mutil.Test.Core\Mutil.Test.Core.csproj", "{25E08770-3C3C-4180-A2A6-97420AC72518}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mutil.Core.Tests", "Mutil.Core.Tests\Mutil.Core.Tests.csproj", "{67E7EAB4-C2B3-444C-AE63-201B1B3D1BCB}"
 EndProject
@@ -21,10 +19,6 @@ Global
 		{23F055A4-58DB-4ADE-8727-8600E88493F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23F055A4-58DB-4ADE-8727-8600E88493F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23F055A4-58DB-4ADE-8727-8600E88493F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25E08770-3C3C-4180-A2A6-97420AC72518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25E08770-3C3C-4180-A2A6-97420AC72518}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25E08770-3C3C-4180-A2A6-97420AC72518}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25E08770-3C3C-4180-A2A6-97420AC72518}.Release|Any CPU.Build.0 = Release|Any CPU
 		{67E7EAB4-C2B3-444C-AE63-201B1B3D1BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{67E7EAB4-C2B3-444C-AE63-201B1B3D1BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67E7EAB4-C2B3-444C-AE63-201B1B3D1BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -34,7 +28,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{25E08770-3C3C-4180-A2A6-97420AC72518} = {C7AF44AC-52D0-4C7A-B71B-21395F4EDACE}
 		{67E7EAB4-C2B3-444C-AE63-201B1B3D1BCB} = {C7AF44AC-52D0-4C7A-B71B-21395F4EDACE}
 	EndGlobalSection
 EndGlobal
