@@ -39,10 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assertion\AssertionLogger.cs" />
-    <Compile Include="Assertion\Assume.cs" />
+    <Compile Include="Assertion\AndNotEmpty.cs" />
+    <Compile Include="Assertion\AndNotNull.cs" />
+    <Compile Include="Assertion\AndNotWhiteSpace.cs" />
+    <Compile Include="Assertion\AndThat.cs" />
     <Compile Include="Assertion\Ensure.cs" />
-    <Compile Include="Assertion\ThatResult.cs" />
+    <Compile Include="Assertion\IAndNotEmtpy.cs" />
+    <Compile Include="Assertion\IAndNotNull.cs" />
+    <Compile Include="Assertion\IAndNotWhiteSpace.cs" />
+    <Compile Include="Assertion\IAndThat.cs" />
     <Compile Include="DataTypes\WriteOnce.cs" />
     <Compile Include="Exceptions\AlreadyRegisteredException.cs" />
     <Compile Include="Exceptions\MutilException.cs" />

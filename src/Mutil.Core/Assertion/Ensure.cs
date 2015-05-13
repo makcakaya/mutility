@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-using System.Text;
 using System.Linq;
 
 namespace Mutil.Core.Assertion
@@ -12,98 +9,36 @@ namespace Mutil.Core.Assertion
     /// </summary>
     public static class Ensure
     {
-        #region Fields
+        private static readonly IAndNotEmpty NotEmptyOp = new AndNotEmpty();
+        private static readonly IAndNotWhiteSpace NotWhiteSpaceOp = new AndNotWhiteSpace();
+        private static readonly IAndNotNull NotNullOp = new AndNotNull();
 
-        private const string _ctorId = "*CONSTRUCTOR*";
-        private const string _returnsId = "*RETURNS*";
-
-        #endregion Fields
-
-        #region Properties
-
-        public static string CtorId
+        public static IAndThat That(bool value)
         {
-            get { return _ctorId; }
+            return new AndThat(value);
         }
 
-        public static string ReturnsId
+        public static IAndNotNull NotNull<T>(T argument, string argumentName = null) where T : class
         {
-            get { return _returnsId; }
+            return NotNullOp.And(argument, argumentName);
         }
 
-        #endregion Properties
-
-        #region Public Methods
-
-        public static ThatResult That(bool value)
+        public static IAndNotEmpty NotEmpty(string argument, string argumentName = null)
         {
-            return new ThatResult(value); // Fluent API
+            return NotEmptyOp.And(argument, argumentName);
         }
 
-        public static void NotNull<T>(T obj, string argumentName = null) where T : class
+        public static IAndNotWhiteSpace NotWhiteSpace(string argument, string argumentName = null)
         {
-            if (object.ReferenceEquals(obj, null))
+            return NotWhiteSpaceOp.And(argument, argumentName);
+        }
+
+        public static void Contains<T>(IEnumerable<T> collection, T value)
+        {
+            if (!collection.Contains(value))
             {
-                var ex = new ArgumentNullException(argumentName);
-                AssertionLogger.Log(ex);
-                throw ex;
+                throw new InvalidOperationException(string.Format("{0} collection does not contain {1}", collection, value));
             }
         }
-
-        public static void NotEmpty(string obj, string argumentName = null)
-        {
-            if (string.IsNullOrEmpty(obj))
-            {
-                var ex = new ArgumentException(argumentName);
-                AssertionLogger.Log(ex);
-                throw ex;
-            }
-        }
-
-        public static void NotNullOrWhitespace(string obj, string argumentName = null)
-        {
-            if (string.IsNullOrWhiteSpace(obj))
-            {
-                var ex = new ArgumentException(argumentName);
-                AssertionLogger.Log(ex);
-                throw ex;
-            }
-        }
-
-        public static void Contains<T>(IEnumerable<T> collection, T value) 
-        {
-            if (collection.Contains(value)) { return; }
-
-            var ex = new InvalidOperationException(string.Format("{0} collection does not contain {1}", collection, value));
-            AssertionLogger.Log(ex);
-            throw ex;
-        }
-
-        #endregion Public Methods
-
-        #region Private Methods
-
-        private static string GetStackTrace(int trimStackFrame)
-        {
-            var trace = new StackTrace();
-            var sb = new StringBuilder();
-            for (int i = 1; i < trace.FrameCount; i++)
-            {
-                var frame = trace.GetFrame(i);
-                var method = frame.GetMethod();
-                sb.Append(string.Format("{0}: {1}.{2}",
-                    (trace.FrameCount - i) - trimStackFrame, method.DeclaringType.FullName, method.Name));
-                if (method.IsConstructor) { sb.Append(CtorId); }
-                if (method is MethodInfo)
-                {
-                    sb.Append(string.Format(ReturnsId, ((MethodInfo)method).ReturnType.FullName));
-                }
-                sb.Append(Environment.NewLine);
-            }
-
-            return sb.ToString();
-        }
-
-        #endregion Private Methods
     }
 }
